@@ -1,22 +1,36 @@
 import { FC, FormEvent } from "react";
+import { octokit } from "../../api/octokit";
+import { User } from "../../App";
 
 interface SearchInputProps {
   username: string;
-  onClick: (value: string) => void;
+  onHandleUsername: (username: string) => void;
+  onHandleUser: (user: User) => void;
 }
 
-const SearchInput: FC<SearchInputProps> = ({ username, onClick }) => {
-  const handleFetch = (e: FormEvent) => {
+const SearchInput: FC<SearchInputProps> = ({
+  username,
+  onHandleUsername,
+  onHandleUser,
+}) => {
+  const handleFetchUser = (e: FormEvent, username: string) => {
     e.preventDefault();
-    console.log(e);
+    octokit.request(`GET /users/${username}`).then(({ data }) => {
+      onHandleUser({
+        id: data.id,
+        avatar: data.avatar_url,
+        username: data.login,
+        repos: data.public_repos,
+      });
+    });
   };
 
   return (
-    <form onSubmit={(e) => handleFetch(e)}>
+    <form onSubmit={(e) => handleFetchUser(e, username)}>
       <input
         placeholder="Search for Users"
         value={username}
-        onChange={(e) => onClick(e.target.value)}
+        onChange={(e) => onHandleUsername(e.target.value)}
       ></input>
     </form>
   );
