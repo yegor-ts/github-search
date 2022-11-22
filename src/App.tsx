@@ -1,6 +1,6 @@
 import { useState } from "react";
-import SearchInput from "./component/search-input/search-input";
-import ProfileBar from "./component/profile-bar/profile-bar";
+import SearchInput from "./components/search-input/search-input";
+import ProfileBar from "./components/profile-bar/profile-bar";
 
 import "./App.css";
 
