@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { User } from "../../App";
+import { User } from "../../pages/search/search";
 
 import styles from "./profile-bar.module.css";
 
