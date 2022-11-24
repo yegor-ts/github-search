@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { octokit } from "../../api/octokit";
-import { User } from "../search/search";
+import { User } from "../../App";
 
 const Profile = () => {
   const [userProfile, setUserProfile] = useState<User>();

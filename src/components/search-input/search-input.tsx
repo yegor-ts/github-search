@@ -1,6 +1,6 @@
 import { FC, FormEvent } from "react";
 import { octokit } from "../../api/octokit";
-import { User } from "../../pages/search/search";
+import { User } from "../../App";
 
 interface SearchInputProps {
   username: string;

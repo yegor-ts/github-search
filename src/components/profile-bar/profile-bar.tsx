@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { User } from "../../pages/search/search";
+import { User } from "../../App";
 
 import styles from "./profile-bar.module.css";
 
