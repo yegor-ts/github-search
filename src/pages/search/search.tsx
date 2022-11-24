@@ -10,10 +10,8 @@ interface SearchProps {
 
 const Search: FC<SearchProps> = ({ users, onHandleUser }) => {
   const [username, setUsername] = useState<string>("");
-  // const [users, setUsers] = useState<User[]>([]);
 
   const handleGetUsername = (newUsername: string) => setUsername(newUsername);
-  // const handleGetUser = (user: User) => onHandleUsers([...users, user]);
 
   return (
     <>
