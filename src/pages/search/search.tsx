@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import SearchInput from "../../components/search-input/search-input";
-import ProfileBar from "../../components/profile-bar/profile-bar";
+import ResultBar from "../../components/result-bar/result-bar";
 import { User } from "../../App";
 
 interface SearchProps {
@@ -21,8 +21,9 @@ const Search: FC<SearchProps> = ({ users, onHandleUser }) => {
         onHandleUser={onHandleUser}
       />
       {users.map((user) => (
-        <ProfileBar
+        <ResultBar
           key={user.id}
+          type="users"
           avatar={user.avatar}
           username={user.username}
           repos={user.repos}
