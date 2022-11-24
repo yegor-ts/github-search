@@ -21,6 +21,12 @@ const SearchInput: FC<SearchInputProps> = ({
         avatar: data.avatar_url,
         username: data.login,
         repos: data.public_repos,
+        biography: data.bio,
+        email: data.email,
+        followers: data.followers,
+        following: data.following,
+        join_date: data.created_at,
+        location: data.location,
       });
     });
   };

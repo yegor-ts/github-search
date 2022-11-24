@@ -1,0 +1,18 @@
+.profile_card {
+    display: block;
+    margin: 0 auto;
+    height: 400px;
+    width: 500px;
+}
+
+.biography {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.avatar {
+    height: 160px;
+    width: 160px;
+    border-radius: 10px;
+}

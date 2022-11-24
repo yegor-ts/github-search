@@ -1,31 +1,28 @@
-import { useEffect, useState } from "react";
+import { FC } from "react";
 import { useParams } from "react-router-dom";
-import { octokit } from "../../api/octokit";
+import Biography from "../../components/biography/biography";
 import { User } from "../../App";
 
-const Profile = () => {
-  const [userProfile, setUserProfile] = useState<User>();
-  const { username } = useParams();
+interface ProfileProps {
+  users: User[];
+}
 
-  useEffect(() => {
-    octokit.request(`GET /users/${username}`).then(({ data }) => {
-      setUserProfile({
-        id: data.id,
-        avatar: data.avatar_url,
-        username: data.login,
-        repos: data.public_repos,
-      });
-    });
-  }, [username]);
+const Profile: FC<ProfileProps> = ({ users }) => {
+  const { username } = useParams();
+  const user = users.find((user) => user.username === username);
 
   return (
     <>
-      <h1>Profile Page</h1>
-      <ul>
-        <li>{userProfile?.username}</li>
-        <li>{userProfile?.repos}</li>
-        <li>{userProfile?.id}</li>
-      </ul>
+      <Biography
+        avatar={user!.avatar}
+        biography={user!.biography}
+        email={user!.email}
+        followers={user!.followers}
+        following={user!.following}
+        join_date={user!.join_date}
+        location={user!.location}
+        username={user!.username}
+      />
     </>
   );
 };

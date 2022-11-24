@@ -4,7 +4,7 @@ import { User } from "../../App";
 
 import styles from "./profile-bar.module.css";
 
-type ProfileBarProps = Omit<User, "id">;
+type ProfileBarProps = Pick<User, "avatar" | "username" | "repos">;
 
 const ProfileBar: FC<ProfileBarProps> = ({ avatar, username, repos }) => {
   return (

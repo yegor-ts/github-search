@@ -10,6 +10,12 @@ export interface User {
   avatar: string;
   username: string;
   repos: number;
+  email: string;
+  location: string;
+  join_date: string;
+  followers: number;
+  following: number;
+  biography: string;
 }
 
 const App = () => {
@@ -25,7 +31,7 @@ const App = () => {
           path="/"
           element={<Search users={users} onHandleUser={handleGetUser} />}
         />
-        <Route path="/profile/:username" element={<Profile />} />
+        <Route path="/profile/:username" element={<Profile users={users} />} />
       </Routes>
     </div>
   );
