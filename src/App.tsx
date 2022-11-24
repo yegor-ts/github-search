@@ -10,7 +10,7 @@ const App = () => {
       <h1>GitHub Searcher</h1>
       <Routes>
         <Route path="/" element={<Search />} />
-        <Route path="/profile/:id" element={<Profile />} />
+        <Route path="/profile/:username" element={<Profile />} />
       </Routes>
     </div>
   );
