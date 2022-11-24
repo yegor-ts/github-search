@@ -26,6 +26,7 @@ const Search = () => {
       {users.map((user) => (
         <ProfileBar
           key={user.id}
+          id={user.id}
           avatar={user.avatar}
           username={user.username}
           repos={user.repos}
