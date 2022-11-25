@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { formatDate } from "../../helpers/date";
 
 import styles from "./biography.module.css";
 
@@ -31,7 +32,7 @@ const Biography: FC<BiographyProps> = ({
           <p>{username}</p>
           <p>{email}</p>
           <p>{location}</p>
-          <p>{join_date}</p>
+          <p>Joined: {formatDate(join_date)}</p>
           <p>{followers} Followers</p>
           <p>Following {following}</p>
         </div>
