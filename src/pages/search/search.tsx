@@ -16,8 +16,9 @@ const Search: FC<SearchProps> = ({ users, onHandleUser }) => {
   return (
     <>
       <SearchInput
-        username={username}
-        onHandleUsername={handleGetUsername}
+        type="user"
+        name={username}
+        onHandleName={handleGetUsername}
         onHandleUser={onHandleUser}
       />
       {users.map((user) => (
