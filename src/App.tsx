@@ -2,21 +2,9 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Search from "./pages/search/search";
 import Profile from "./pages/profile/profile";
+import { User } from "./shared/interfaces/user.interface";
 
 import "./App.css";
-
-export interface User {
-  id: number;
-  avatar: string;
-  username: string;
-  repos: number;
-  email: string;
-  location: string;
-  join_date: string;
-  followers: number;
-  following: number;
-  biography: string;
-}
 
 const App = () => {
   const [users, setUsers] = useState<User[]>([]);

@@ -1,6 +1,6 @@
 import { FC, FormEvent } from "react";
 import { octokit } from "../../api/octokit";
-import { User } from "../../App";
+import { User } from "../../shared/interfaces/user.interface";
 
 interface SearchInputProps {
   type: "user" | "repository";
@@ -17,20 +17,22 @@ const SearchInput: FC<SearchInputProps> = ({
 }) => {
   const handleFetchUser = (e: FormEvent, username: string) => {
     e.preventDefault();
-    octokit.request(`GET /users/${username}`).then(({ data }) => {
-      onHandleUser!({
-        id: data.id,
-        avatar: data.avatar_url,
-        username: data.login,
-        repos: data.public_repos,
-        biography: data.bio,
-        email: data.email,
-        followers: data.followers,
-        following: data.following,
-        join_date: data.created_at,
-        location: data.location,
+    octokit
+      .request(`GET /users/${username}`)
+      .then(({ data }: { data: User }) => {
+        onHandleUser!({
+          id: data.id,
+          avatar_url: data.avatar_url,
+          login: data.login,
+          public_repos: data.public_repos,
+          bio: data.bio,
+          email: data.email,
+          followers: data.followers,
+          following: data.following,
+          created_at: data.created_at,
+          location: data.location,
+        });
       });
-    });
   };
 
   return type === "user" ? (

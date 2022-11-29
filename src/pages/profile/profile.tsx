@@ -4,13 +4,8 @@ import Biography from "../../components/biography/biography";
 import ResultBar from "../../components/result-bar/result-bar";
 import SearchInput from "../../components/search-input/search-input";
 import { octokit } from "../../api/octokit";
-import { User } from "../../App";
-
-interface Repository {
-  id: number;
-  name: string;
-  forks: number;
-}
+import { User } from "../../shared/interfaces/user.interface";
+import { Repository } from "../../shared/interfaces/repository.interface";
 
 interface ProfileProps {
   users: User[];
@@ -21,7 +16,7 @@ const Profile: FC<ProfileProps> = ({ users }) => {
   const [repoName, setRepoName] = useState<string>("");
 
   const { username } = useParams();
-  const user = users.find((user) => user.username === username);
+  const user = users.find((user) => user.login === username);
 
   const handleGetRepoName = (newRepoName: string) => setRepoName(newRepoName);
 
@@ -30,20 +25,20 @@ const Profile: FC<ProfileProps> = ({ users }) => {
   useEffect(() => {
     octokit
       .request(`GET /users/${username}/repos`)
-      .then(({ data }) => setRepos(data));
+      .then(({ data }: { data: Repository[] }) => setRepos(data));
   }, [username]);
 
   return (
     <>
       <Biography
-        avatar={user!.avatar}
-        biography={user!.biography}
+        avatar={user!.avatar_url}
+        biography={user!.bio}
         email={user!.email}
         followers={user!.followers}
         following={user!.following}
-        join_date={user!.join_date}
+        join_date={user!.created_at}
         location={user!.location}
-        username={user!.username}
+        username={user!.login}
       />
       <SearchInput
         type="repository"

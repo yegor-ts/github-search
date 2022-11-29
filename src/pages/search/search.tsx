@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import SearchInput from "../../components/search-input/search-input";
 import ResultBar from "../../components/result-bar/result-bar";
-import { User } from "../../App";
+import { User } from "../../shared/interfaces/user.interface";
 
 interface SearchProps {
   users: User[];
@@ -25,9 +25,9 @@ const Search: FC<SearchProps> = ({ users, onHandleUser }) => {
         <ResultBar
           key={user.id}
           type="users"
-          avatar={user.avatar}
-          username={user.username}
-          repos={user.repos}
+          avatar={user.avatar_url}
+          username={user.login}
+          repos={user.public_repos}
         />
       ))}
     </>
