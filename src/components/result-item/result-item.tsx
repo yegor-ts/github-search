@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 
-import styles from "./result-bar.module.css";
+import styles from "./result-item.module.css";
 
-interface ResultBarProps {
+interface ResultItemProps {
   type: "repositories" | "users";
   avatar?: string;
   username?: string;
@@ -12,7 +12,7 @@ interface ResultBarProps {
   forks?: number;
 }
 
-const ResultBar: FC<ResultBarProps> = ({
+const ResultItem: FC<ResultItemProps> = ({
   type,
   avatar,
   username,
@@ -21,15 +21,15 @@ const ResultBar: FC<ResultBarProps> = ({
   forks,
 }) => {
   return type === "users" ? (
-    <div className={styles.bar}>
-      <img className={styles.bar_avatar} src={avatar} alt={username} />
+    <div className={styles.resultItem}>
+      <img className={styles.resultItem_avatar} src={avatar} alt={username} />
       <Link to={`/profile/${username}`}>
         <p>{username}</p>
       </Link>
       <p>Repo: {repos}</p>
     </div>
   ) : (
-    <div className={styles.bar}>
+    <div className={styles.resultItem}>
       <a
         href={`https://github.com/${username}/${repoName}`}
         target="_blank"
@@ -42,4 +42,4 @@ const ResultBar: FC<ResultBarProps> = ({
   );
 };
 
-export default ResultBar;
+export default ResultItem;

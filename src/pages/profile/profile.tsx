@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Biography from "../../components/biography/biography";
-import ResultBar from "../../components/result-bar/result-bar";
+import ResultItem from "../../components/result-item/result-item";
 import SearchInput from "../../components/search-input/search-input";
 import { octokit } from "../../api/octokit";
 import { User } from "../../shared/interfaces/user.interface";
@@ -46,7 +46,7 @@ const Profile: FC<ProfileProps> = ({ users }) => {
         onHandleName={handleGetRepoName}
       />
       {repo ? (
-        <ResultBar
+        <ResultItem
           type="repositories"
           username={username}
           repoName={repo?.name}
@@ -54,7 +54,7 @@ const Profile: FC<ProfileProps> = ({ users }) => {
         />
       ) : (
         repos.map((repo) => (
-          <ResultBar
+          <ResultItem
             key={repo.id}
             type="repositories"
             username={username}

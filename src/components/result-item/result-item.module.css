@@ -1,4 +1,4 @@
-.bar {
+.resultItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,11 +13,11 @@
   background-color: #f9f9f9;
 }
 
-.bar:hover {
+.resultItem:hover {
   background-color: #ececec;
 }
 
-.bar_avatar {
+.resultItem_avatar {
   width: 55px;
   height: 55px;
   border-radius: 10px;
