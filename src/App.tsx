@@ -9,7 +9,15 @@ import "./App.css";
 const App = () => {
   const [users, setUsers] = useState<User[]>([]);
 
-  const handleGetUser = (user: User) => setUsers([...users, user]);
+  const handleGetUser = (user: User) => {
+    const idx = users.findIndex((u) => u.id === user.id);
+
+    if (idx === -1) {
+      setUsers([...users, user]);
+    } else {
+      alert("This user is already in the list");
+    }
+  };
 
   return (
     <div className="App">
