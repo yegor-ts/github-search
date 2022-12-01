@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./result-item.module.css";
 
@@ -20,12 +20,14 @@ const ResultItem: FC<ResultItemProps> = ({
   repoName,
   forks,
 }) => {
+  const navigate = useNavigate();
+
+  const onClickItem = () => navigate(`/profile/${username}`);
+
   return type === "users" ? (
-    <div className={styles.resultItem}>
+    <div className={styles.resultItem} onClick={onClickItem}>
       <img className={styles.resultItem_avatar} src={avatar} alt={username} />
-      <Link to={`/profile/${username}`}>
-        <p>{username}</p>
-      </Link>
+      <p>{username}</p>
       <p>Repo: {repos}</p>
     </div>
   ) : (

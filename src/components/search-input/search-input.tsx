@@ -2,6 +2,8 @@ import { FC, FormEvent } from "react";
 import { octokit } from "../../api/octokit";
 import { User } from "../../shared/interfaces/user.interface";
 
+import styles from "./search-input.module.css";
+
 interface SearchInputProps {
   type: "user" | "repository";
   name: string;
@@ -41,6 +43,7 @@ const SearchInput: FC<SearchInputProps> = ({
         placeholder="Search for Users"
         value={name}
         onChange={(e) => onHandleName(e.target.value)}
+        className={styles.searchInput}
       ></input>
     </form>
   ) : (
@@ -48,6 +51,7 @@ const SearchInput: FC<SearchInputProps> = ({
       placeholder="Search for Repositories"
       value={name}
       onChange={(e) => onHandleName(e.target.value)}
+      className={styles.searchInput}
     ></input>
   );
 };
