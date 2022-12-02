@@ -34,7 +34,8 @@ const SearchInput: FC<SearchInputProps> = ({
           created_at: data.created_at,
           location: data.location,
         });
-      });
+      })
+      .catch((err) => alert("User not found"));
   };
 
   return type === "user" ? (

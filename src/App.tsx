@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Search from "./pages/search/search";
 import Profile from "./pages/profile/profile";
 import { User } from "./shared/interfaces/user.interface";
@@ -28,6 +28,7 @@ const App = () => {
           element={<Search users={users} onHandleUser={handleGetUser} />}
         />
         <Route path="/profile/:username" element={<Profile users={users} />} />
+        <Route path="*" element={<Navigate replace to="/" />} />
       </Routes>
     </div>
   );
