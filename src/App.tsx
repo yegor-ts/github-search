@@ -4,7 +4,7 @@ import Search from "./pages/search/search";
 import Profile from "./pages/profile/profile";
 import { User } from "./shared/interfaces/user.interface";
 
-import "./App.css";
+import styles from "./App.module.css";
 
 const App = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -20,7 +20,7 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <h1>GitHub Searcher</h1>
       <Routes>
         <Route
